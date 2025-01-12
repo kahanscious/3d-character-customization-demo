@@ -18,4 +18,5 @@ mono_crash.*.json
 /notes
 .tmp
 directory-outline.txt
+/assets
 
