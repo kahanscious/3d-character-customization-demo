@@ -1,10 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6tjcg1pbdxxk"]
+[gd_scene load_steps=2 format=3 uid="uid://c7qkmb7ctktvg"]
 
-[ext_resource type="Script" path="res://scripts/customization_panel_3d.gd" id="1_m1aam"]
+[ext_resource type="Script" path="res://scripts/customization_panel.gd" id="1_4syqr"]
 
-[node name="CustomizationPanel3D" type="Control"]
+[node name="CustomizationPanel" type="Control"]
 layout_mode = 3
-anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -14,7 +13,7 @@ offset_top = -250.0
 offset_bottom = 250.0
 grow_horizontal = 0
 grow_vertical = 2
-script = ExtResource("1_m1aam")
+script = ExtResource("1_4syqr")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -34,11 +33,9 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 15
 
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Character Customization"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -53,30 +50,21 @@ text = "Skin Color"
 [node name="SkinColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/SkinColorSection"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
-
-[node name="EyeColorSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/EyeColorSection"]
-layout_mode = 2
-text = "Eye Color"
-
-[node name="EyeColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/EyeColorSection"]
-custom_minimum_size = Vector2(60, 30)
-layout_mode = 2
+focus_mode = 0
 
 [node name="HairSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HairSection"]
 layout_mode = 2
-text = "Hair Style & Color"
-
-[node name="HairStyleOption" type="OptionButton" parent="MarginContainer/ScrollContainer/VBoxContainer/HairSection"]
-layout_mode = 2
+text = "Hair Color and Style"
 
 [node name="HairColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/HairSection"]
 custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+focus_mode = 0
+
+[node name="HairStyleOption" type="OptionButton" parent="MarginContainer/ScrollContainer/VBoxContainer/HairSection"]
 layout_mode = 2
 
 [node name="TShirtSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
@@ -95,6 +83,7 @@ layout_mode = 2
 [node name="TShirtColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/TShirtSection"]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
+focus_mode = 0
 
 [node name="JeansSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -106,12 +95,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Jeans"
 
-[node name="JeansToggle" type="CheckButton" parent="MarginContainer/ScrollContainer/VBoxContainer/JeansSection/HBoxContainer"]
-layout_mode = 2
-
 [node name="JeansColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/JeansSection"]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
+focus_mode = 0
 
 [node name="SneakersSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -129,6 +116,7 @@ layout_mode = 2
 [node name="SneakersColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/SneakersSection"]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
+focus_mode = 0
 
 [node name="ZoomSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -141,7 +129,8 @@ text = "Camera Zoom"
 layout_mode = 2
 min_value = 1.0
 max_value = 4.0
-value = 2.0
+step = 0.1
+value = 3.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -155,3 +144,15 @@ text = "Randomize"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Reset"
+
+[connection signal="color_changed" from="MarginContainer/ScrollContainer/VBoxContainer/SkinColorSection/SkinColorPicker" to="." method="_on_skin_color_picker_color_changed"]
+[connection signal="color_changed" from="MarginContainer/ScrollContainer/VBoxContainer/HairSection/HairColorPicker" to="." method="_on_hair_color_picker_color_changed"]
+[connection signal="item_selected" from="MarginContainer/ScrollContainer/VBoxContainer/HairSection/HairStyleOption" to="." method="_on_hair_style_option_item_selected"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/TShirtSection/HBoxContainer/TShirtToggle" to="." method="_on_t_shirt_toggle_toggled"]
+[connection signal="color_changed" from="MarginContainer/ScrollContainer/VBoxContainer/TShirtSection/TShirtColorPicker" to="." method="_on_t_shirt_color_picker_color_changed"]
+[connection signal="color_changed" from="MarginContainer/ScrollContainer/VBoxContainer/JeansSection/JeansColorPicker" to="." method="_on_jeans_color_picker_color_changed"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/SneakersSection/HBoxContainer/SneakersToggle" to="." method="_on_sneakers_toggle_toggled"]
+[connection signal="color_changed" from="MarginContainer/ScrollContainer/VBoxContainer/SneakersSection/SneakersColorPicker" to="." method="_on_sneakers_color_picker_color_changed"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/VBoxContainer/ZoomSection/ZoomSlider" to="." method="_on_zoom_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/RandomizeButton" to="." method="_on_randomize_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

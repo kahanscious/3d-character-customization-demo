@@ -1,56 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://btwqobq0bbb6t"]
+[gd_scene load_steps=6 format=3 uid="uid://bthsd0g171pde"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_3stqs"]
-[ext_resource type="Script" path="res://scripts/character_3d.gd" id="1_6ogj3"]
-[ext_resource type="PackedScene" uid="uid://gh5404k8v43s" path="res://assets/Chad_061122.Fbx" id="2_bbi1k"]
-[ext_resource type="PackedScene" uid="uid://b6tjcg1pbdxxk" path="res://scenes/customization_panel_3d.tscn" id="3_n4h16"]
-[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="4_pid2m"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_4whwg"]
+[ext_resource type="PackedScene" uid="uid://cuv4kcwq82c2y" path="res://scenes/character.tscn" id="2_r0k85"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_81djt"]
+[ext_resource type="PackedScene" uid="uid://c7qkmb7ctktvg" path="res://scenes/customization_panel.tscn" id="4_1xkkq"]
 
-[sub_resource type="Environment" id="Environment_mjfax"]
+[sub_resource type="Environment" id="Environment_7yfoc"]
 background_mode = 1
-background_color = Color(0.14175, 0.371899, 0.3204, 1)
-tonemap_mode = 3
+background_color = Color(0.14, 0.37, 0.32, 1)
+tonemap_mode = 2
 ssao_enabled = true
-ssao_radius = 0.5
-ssao_intensity = 1.0
 glow_enabled = true
 glow_intensity = 0.2
 glow_bloom = 0.1
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_3stqs")
+script = ExtResource("1_4whwg")
 
-[node name="Character3D" type="CharacterBody3D" parent="."]
-script = ExtResource("1_6ogj3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Character3D"]
-
-[node name="CharacterContainer" type="Node3D" parent="Character3D"]
-
-[node name="CharacterModel" parent="Character3D/CharacterContainer" instance=ExtResource("2_bbi1k")]
+[node name="Character" parent="." instance=ExtResource("2_r0k85")]
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["main_camera"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
-current = true
-script = ExtResource("4_pid2m")
+script = ExtResource("3_81djt")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera3D"]
-environment = SubResource("Environment_mjfax")
+[node name="Lighting" type="Node3D" parent="."]
 
-[node name="KeyLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 2, 2, 2)
-light_color = Color(1, 0.95, 0.9, 1)
+[node name="KeyLight" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(0.999871, -0.010471, 0.012217, 0.0104718, 0.999945, 0, -0.0122163, 0.000127934, 0.999925, 0, 0, 0)
+light_color = Color(1, 0.9, 0.9, 1)
 light_energy = 2.0
 shadow_enabled = true
 
-[node name="FillLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866025, 0.5, 0.707107, -0.353553, 0.612372, -1.5, 1, 1.5)
+[node name="FillLight" type="DirectionalLight3D" parent="Lighting"]
 light_color = Color(0.9, 0.95, 1, 1)
 light_energy = 0.5
 
-[node name="RimLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-1, -6.18172e-08, -6.18172e-08, 0, 0.707107, -0.707107, 8.74228e-08, -0.707107, -0.707107, 0, 1.5, -2)
+[node name="RimLight" type="DirectionalLight3D" parent="Lighting"]
+light_energy = 0.3
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7yfoc")
 
-[node name="CustomizationPanel3D" parent="CanvasLayer" instance=ExtResource("3_n4h16")]
+[node name="CustomizationPanel" parent="." instance=ExtResource("4_1xkkq")]
+anchors_preset = 6

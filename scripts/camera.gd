@@ -1,10 +1,9 @@
-# camera_3d.gd
 extends Camera3D
 
-var target_position := Vector3(0, 0.9, 0)
+var target_position: Vector3 = Vector3(0, 0.9, 0)
 var dragging := false
 var drag_start_position := Vector2()
-var current_zoom := 2.5  # Match the slider's default value
+var current_zoom := 2.5
 
 
 func _ready() -> void:
@@ -24,15 +23,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion and dragging:
 		var drag_delta = event.position - drag_start_position
 		var horizontal_rotation = deg_to_rad(drag_delta.x * 0.5)
-
 		var character = get_tree().get_first_node_in_group("character_container")
 		if character:
 			character.rotate_y(horizontal_rotation)
-
 		drag_start_position = event.position
 
 
-func set_zoom(value: float) -> void:
+func set_zoom(value: float):
 	current_zoom = value
 	_update_camera_position()
 

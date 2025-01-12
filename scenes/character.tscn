@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuv4kcwq82c2y"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_jofg4"]
+[ext_resource type="PackedScene" uid="uid://gh5404k8v43s" path="res://assets/Chad_061122.Fbx" id="2_fqfyt"]
+
+[node name="Character" type="CharacterBody3D"]
+script = ExtResource("1_jofg4")
+
+[node name="CharacterContainer" type="Node3D" parent="." groups=["character_container"]]
+
+[node name="CharacterModel" parent="CharacterContainer" instance=ExtResource("2_fqfyt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0290812, 0)

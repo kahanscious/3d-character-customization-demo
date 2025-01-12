@@ -1,27 +1,27 @@
-# customization_manager.gd
 extends Node
 
-signal color_updated(part: CharacterData3D.BodyPart, color: Color)
+signal color_updated(part: CharacterData.BodyPart, color: Color)
 signal customization_updated
 
-var character_data: CharacterData3D
+var character_data: CharacterData
 
 
 func _ready() -> void:
-	character_data = CharacterData3D.new()
+	character_data = CharacterData.new()
+	customization_updated.emit()
 
 
-func update_color(part: CharacterData3D.BodyPart, color: Color) -> void:
+func update_color(part: CharacterData.BodyPart, color: Color) -> void:
 	match part:
-		CharacterData3D.BodyPart.BASE:
+		CharacterData.BodyPart.BASE:
 			character_data.skin_color = color
-		CharacterData3D.BodyPart.HAIR:
+		CharacterData.BodyPart.HAIR:
 			character_data.hair_color = color
-		CharacterData3D.BodyPart.TSHIRT:
+		CharacterData.BodyPart.TSHIRT:
 			character_data.tshirt_color = color
-		CharacterData3D.BodyPart.JEANS:
+		CharacterData.BodyPart.JEANS:
 			character_data.jeans_color = color
-		CharacterData3D.BodyPart.SNEAKERS:
+		CharacterData.BodyPart.SNEAKERS:
 			character_data.sneakers_color = color
 
 	color_updated.emit(part, color)
@@ -29,44 +29,41 @@ func update_color(part: CharacterData3D.BodyPart, color: Color) -> void:
 
 
 func reset_character() -> void:
-	character_data = CharacterData3D.new()  # Create fresh instance with default values
+	character_data = CharacterData.new()
 	customization_updated.emit()
 
 
 func randomize_character() -> void:
-	# Randomize skin
 	character_data.skin_color = Color(
 		randf_range(0.5, 1.0), randf_range(0.4, 0.9), randf_range(0.3, 0.8), 1.0
 	)
 
-	# Randomize hair
 	character_data.hair_color = Color(
 		randf_range(0.1, 0.8), randf_range(0.1, 0.8), randf_range(0.1, 0.8), 1.0
 	)
 
-	# Randomize clothing colors
 	character_data.tshirt_color = Color(
 		randf_range(0.2, 1.0), randf_range(0.2, 1.0), randf_range(0.2, 1.0), 1.0
 	)
+
 	character_data.jeans_color = Color(
 		randf_range(0.2, 1.0), randf_range(0.2, 1.0), randf_range(0.2, 1.0), 1.0
 	)
+
 	character_data.sneakers_color = Color(
 		randf_range(0.2, 1.0), randf_range(0.2, 1.0), randf_range(0.2, 1.0), 1.0
 	)
 
-	# Randomize hair style
-	character_data.selected_hair = randi() % CharacterData3D.HairStyle.values().size()
+	character_data.selected_hair = randi_range(0, CharacterData.HairStyle.values().size() - 1)
 
-	# Randomize visibility
 	character_data.tshirt_visible = true
-	character_data.sneakers_visible = true if randf() > 0.5 else false
+	character_data.sneakers_visible = false
 
 	customization_updated.emit()
 
 
-func update_part(part: CharacterData3D.BodyPart, index: int) -> void:
+func update_part(part: CharacterData.BodyPart, index: int) -> void:
 	match part:
-		CharacterData3D.BodyPart.HAIR:
+		CharacterData.BodyPart.HAIR:
 			character_data.selected_hair = index
 	customization_updated.emit()
