@@ -1,7 +1,7 @@
 # character_data_3d.gd
 class_name CharacterData3D extends Resource
 
-enum BodyPart { BASE, HAIR, TSHIRT, JEANS, SNEAKERS, EYES }
+enum BodyPart { BASE, HAIR, TSHIRT, JEANS, SNEAKERS }
 enum HairStyle { BALD = 0, SHORT = 1 }
 
 # Base appearance
@@ -19,5 +19,3 @@ enum HairStyle { BALD = 0, SHORT = 1 }
 # Visibility flags for each piece
 @export var tshirt_visible: bool = true
 @export var sneakers_visible: bool = false
-
-@export var eye_color: Color = Color(0.3, 0.2, 0.1, 1.0)

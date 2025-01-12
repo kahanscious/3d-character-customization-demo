@@ -4,8 +4,6 @@ extends Control
 @onready
 var skin_color_picker := $MarginContainer/ScrollContainer/VBoxContainer/SkinColorSection/SkinColorPicker
 @onready
-var eye_color_picker := $MarginContainer/ScrollContainer/VBoxContainer/EyeColorSection/EyeColorPicker
-@onready
 var hair_style_option := $MarginContainer/ScrollContainer/VBoxContainer/HairSection/HairStyleOption
 @onready
 var hair_color_picker := $MarginContainer/ScrollContainer/VBoxContainer/HairSection/HairColorPicker
@@ -40,7 +38,6 @@ func _setup_options() -> void:
 	# Set initial colors from data
 	var data = CustomizationManager3D.character_data
 	skin_color_picker.color = data.skin_color
-	eye_color_picker.color = data.eye_color
 	hair_color_picker.color = data.hair_color
 	tshirt_color_picker.color = data.tshirt_color
 	jeans_color_picker.color = data.jeans_color
@@ -54,7 +51,6 @@ func _setup_options() -> void:
 func _connect_signals() -> void:
 	# Color change signals
 	skin_color_picker.color_changed.connect(_on_skin_color_changed)
-	eye_color_picker.color_changed.connect(_on_eye_color_changed)
 	hair_color_picker.color_changed.connect(_on_hair_color_changed)
 	tshirt_color_picker.color_changed.connect(_on_tshirt_color_changed)
 	jeans_color_picker.color_changed.connect(_on_jeans_color_changed)
@@ -80,10 +76,6 @@ func _connect_signals() -> void:
 
 func _on_skin_color_changed(color: Color) -> void:
 	CustomizationManager3D.update_color(CharacterData3D.BodyPart.BASE, color)
-
-
-func _on_eye_color_changed(color: Color) -> void:
-	CustomizationManager3D.update_color(CharacterData3D.BodyPart.EYES, color)
 
 
 func _on_hair_color_changed(color: Color) -> void:
@@ -136,7 +128,6 @@ func _update_ui_from_data() -> void:
 
 	# Update colors
 	skin_color_picker.color = data.skin_color
-	eye_color_picker.color = data.eye_color
 	hair_color_picker.color = data.hair_color
 	tshirt_color_picker.color = data.tshirt_color
 	jeans_color_picker.color = data.jeans_color

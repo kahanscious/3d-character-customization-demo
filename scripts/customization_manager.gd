@@ -15,8 +15,6 @@ func update_color(part: CharacterData3D.BodyPart, color: Color) -> void:
 	match part:
 		CharacterData3D.BodyPart.BASE:
 			character_data.skin_color = color
-		CharacterData3D.BodyPart.EYES:
-			character_data.eye_color = color
 		CharacterData3D.BodyPart.HAIR:
 			character_data.hair_color = color
 		CharacterData3D.BodyPart.TSHIRT:
@@ -39,11 +37,6 @@ func randomize_character() -> void:
 	# Randomize skin
 	character_data.skin_color = Color(
 		randf_range(0.5, 1.0), randf_range(0.4, 0.9), randf_range(0.3, 0.8), 1.0
-	)
-
-	# Randomize eyes
-	character_data.eye_color = Color(
-		randf_range(0.1, 0.8), randf_range(0.1, 0.8), randf_range(0.1, 0.8), 1.0
 	)
 
 	# Randomize hair

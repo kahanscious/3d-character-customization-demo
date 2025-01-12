@@ -55,18 +55,6 @@ custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 focus_mode = 0
 
-[node name="EyeColorSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/EyeColorSection"]
-layout_mode = 2
-text = "Eye Color"
-
-[node name="EyeColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/EyeColorSection"]
-custom_minimum_size = Vector2(60, 30)
-layout_mode = 2
-focus_mode = 0
-
 [node name="HairSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
