@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://btwqobq0bbb6t"]
+
+[ext_resource type="Script" path="res://scripts/character_3d.gd" id="1_6ogj3"]
+[ext_resource type="PackedScene" uid="uid://gh5404k8v43s" path="res://assets/Chad_061122.Fbx" id="2_bbi1k"]
+[ext_resource type="PackedScene" uid="uid://b6tjcg1pbdxxk" path="res://scenes/customization_panel_3d.tscn" id="3_n4h16"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Character3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_6ogj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Character3D"]
+
+[node name="CharacterContainer" type="Node3D" parent="Character3D"]
+
+[node name="CharacterModel" parent="Character3D/CharacterContainer" instance=ExtResource("2_bbi1k")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 2, 2, 2)
+light_energy = 1.5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CustomizationPanel3D" parent="CanvasLayer" instance=ExtResource("3_n4h16")]

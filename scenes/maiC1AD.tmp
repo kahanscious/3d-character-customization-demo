@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://btwqobq0bbb6t"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_3stqs"]
+[ext_resource type="Script" path="res://scripts/character_3d.gd" id="1_6ogj3"]
+[ext_resource type="PackedScene" uid="uid://gh5404k8v43s" path="res://assets/Chad_061122.Fbx" id="2_bbi1k"]
+[ext_resource type="PackedScene" uid="uid://b6tjcg1pbdxxk" path="res://scenes/customization_panel_3d.tscn" id="3_n4h16"]
+[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="4_pid2m"]
+[ext_resource type="PackedScene" uid="uid://dxljkwne0qorc" path="res://scenes/lighting_setup.tscn" id="5_0nktl"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_3stqs")
+
+[node name="Character3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_6ogj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Character3D"]
+
+[node name="CharacterContainer" type="Node3D" parent="Character3D"]
+
+[node name="CharacterModel" parent="Character3D/CharacterContainer" instance=ExtResource("2_bbi1k")]
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["main_camera"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 2)
+current = true
+script = ExtResource("4_pid2m")
+
+[node name="LightingSetup" parent="." instance=ExtResource("5_0nktl")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CustomizationPanel3D" parent="CanvasLayer" instance=ExtResource("3_n4h16")]

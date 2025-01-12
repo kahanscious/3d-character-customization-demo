@@ -1,0 +1,157 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6tjcg1pbdxxk"]
+
+[ext_resource type="Script" path="res://scripts/customization_panel_3d.gd" id="1_m1aam"]
+
+[node name="CustomizationPanel3D" type="Control"]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_bottom = 250.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_m1aam")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Character Customization"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkinColorSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/SkinColorSection"]
+layout_mode = 2
+text = "Skin Color"
+
+[node name="SkinColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/SkinColorSection"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+
+[node name="EyeColorSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/EyeColorSection"]
+layout_mode = 2
+text = "Eye Color"
+
+[node name="EyeColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/EyeColorSection"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+
+[node name="HairSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HairSection"]
+layout_mode = 2
+text = "Hair Style & Color"
+
+[node name="HairStyleOption" type="OptionButton" parent="MarginContainer/ScrollContainer/VBoxContainer/HairSection"]
+layout_mode = 2
+
+[node name="HairColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/HairSection"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+
+[node name="TShirtSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/TShirtSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/TShirtSection/HBoxContainer"]
+layout_mode = 2
+text = "T-Shirt"
+
+[node name="TShirtToggle" type="CheckButton" parent="MarginContainer/ScrollContainer/VBoxContainer/TShirtSection/HBoxContainer"]
+layout_mode = 2
+
+[node name="TShirtColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/TShirtSection"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+
+[node name="JeansSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/JeansSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/JeansSection/HBoxContainer"]
+layout_mode = 2
+text = "Jeans"
+
+[node name="JeansToggle" type="CheckButton" parent="MarginContainer/ScrollContainer/VBoxContainer/JeansSection/HBoxContainer"]
+layout_mode = 2
+
+[node name="JeansColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/JeansSection"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+
+[node name="SneakersSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/SneakersSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/SneakersSection/HBoxContainer"]
+layout_mode = 2
+text = "Sneakers"
+
+[node name="SneakersToggle" type="CheckButton" parent="MarginContainer/ScrollContainer/VBoxContainer/SneakersSection/HBoxContainer"]
+layout_mode = 2
+
+[node name="SneakersColorPicker" type="ColorPickerButton" parent="MarginContainer/ScrollContainer/VBoxContainer/SneakersSection"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+
+[node name="ZoomSection" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/ZoomSection"]
+layout_mode = 2
+text = "Camera Zoom"
+
+[node name="ZoomSlider" type="HSlider" parent="MarginContainer/ScrollContainer/VBoxContainer/ZoomSection"]
+layout_mode = 2
+min_value = 1.0
+max_value = 4.0
+value = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RandomizeButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Randomize"
+
+[node name="ResetButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reset"
