@@ -7,7 +7,6 @@
 
 [sub_resource type="Environment" id="Environment_7yfoc"]
 background_mode = 1
-background_color = Color(0.14, 0.37, 0.32, 1)
 tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
